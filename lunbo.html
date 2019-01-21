@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="lunbo.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bigbox">
+        <div class="topbox">
+           <div class="show">
+               <ul>
+                <li><img src="10.png" alt=""></li>
+                 <li><img src="1.png" alt=""></li>
+                 <li><img src="2.png" alt=""></li>
+                 <li><img src="3.png" alt=""></li>
+                 <li><img src="4.png" alt=""></li>
+                 <li><img src="5.png" alt=""></li>
+                 <li><img src="6.png" alt=""></li>
+                 <li><img src="7.png" alt=""></li>
+                 <li><img src="8.png" alt=""></li>
+                 <li><img src="9.png" alt=""></li>
+                 <li><img src="10.png" alt=""></li>
+                 <li><img src="1.png" alt=""></li>
+            </ul>
+            </div>
+        </div>
+        <div class="bottombox">
+            <ul>
+                <li><button class="charge" >1</button></li>
+                <li ><button >2</button></li>
+                <li><button >3</button></li>
+                <li><button >4</button></li>
+                <li><button >5</button></li>
+                <li><button >6</button></li>
+                <li><button >7</button></li>
+                <li><button >8</button></li>
+                <li><button >9</button></li>
+                <li><button >10</button></li>
+                
+            </ul>
+        </div>
+    </div>
+    <script src="lunbo.js"></script>
+    <script>
+
+        //获取元素
+       var topbox=document.querySelector('.topbox')
+       var lunbo=document.querySelector('.show ul')
+       var index=1
+       var lunboli=document.querySelectorAll('.show ul li')
+       var butli=document.querySelectorAll('.bottombox ul li button')
+       var newindex=0
+       lunbo.style.left=-300+'px'
+        //按钮点击实践
+        topbox.onclick=function (e){
+            console.log(e.clientX)
+            
+            if (e.clientX>790){
+                butli[newindex].className=''
+                index++
+                newindex++
+                if(index>=lunboli.length){
+                    index=2
+                    lunbo.style.left=-300+'px'                   
+                }
+                moveevent(lunbo,-index*300,20)
+                if(newindex>9){
+                    newindex=0
+                }
+                butli[newindex].className='charge'
+                
+                
+            }
+            else{
+                butli[newindex].className=''
+                index--
+                newindex--
+                if(index<0){
+                    index=lunboli.length-3
+                                 
+                    lunbo.style.left=-10*300+'px'
+                    console.log(index)
+                }
+                moveevent(lunbo,-index*300,10)
+
+                if(newindex<0){
+                    newindex=9
+                }
+                butli[newindex].className='charge'
+                // console.log()
+            
+            }
+        }
+        for(var bbr=0;bbr<butli.length;bbr++){
+            
+            butli[bbr].superindex=bbr+1;
+            butli[bbr].onclick=function (){
+               for(bpr=0;bpr<butli.length;bpr++){
+                   butli[bpr].className=''
+               }
+                index=this.superindex
+                moveevent(lunbo,-this.superindex*300,10)
+                // lunbo.style.left=-this.superindex*300+'px'
+                
+                this.className='charge'
+                console.log(bbr+1)
+            }
+        }
+    </script>
+</body>
+</html>

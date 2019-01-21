@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            height: 5000px;
+            width: 200px;
+            background: red;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+        .backbut {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <input type="button" value="前进">
+    <input type="button" value="后退">
+    <input type="button"value="back" class="backbut">
+
+
+    <script>
+        var backTop=document.querySelector('.backbut')
+
+            window.onscroll=function () {
+            var bbr=document.documentElement.scrollTop || document.body.scrollTop
+                if(bbr>300){
+                    backTop.style.display='block'
+                }
+                else {
+                    backTop.style.display='none'
+                }
+            }
+
+            backTop.onclick=function(){
+                document.documentElement.scrollTop=0;
+                document.body.scrollTop=0;  
+            }
+    
+    </script>
+</body>
+</html>
